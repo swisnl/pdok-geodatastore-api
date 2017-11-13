@@ -14,7 +14,7 @@ class Authentication implements Plugin
 
     private $password;
 
-    public function __construct($username, $password = null)
+    public function __construct($username, $password)
     {
         $this->username = $username;
         $this->password = $password;
