@@ -1,6 +1,6 @@
 # PDOK Geodatastore API
 
-A simple Object Oriented wrapper for PDOK Geodatastore API, written in PHP5. Uses [PDOK Geodatastore API v1](https://geodatastore.pdok.nl/api/v1/docs).
+A simple Object Oriented wrapper for PDOK Geodatastore API, written in PHP7. Uses [PDOK Geodatastore API v1](https://geodatastore.pdok.nl/api/v1/docs).
 
 ## Features
 
@@ -9,7 +9,7 @@ A simple Object Oriented wrapper for PDOK Geodatastore API, written in PHP5. Use
 
 ## Requirements
 
-* PHP >= 5.6
+* PHP >= 7.0
 * [Guzzle](https://github.com/guzzle/guzzle) library,
 * (optional) PHPUnit to run tests.
 
