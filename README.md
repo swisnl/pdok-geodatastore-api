@@ -1,5 +1,11 @@
 # PDOK Geodatastore API
 
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/swisnl/pdok-geodatastore-api.svg)](https://packagist.org/packages/swisnl/pdok-geodatastore-api)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/swisnl/pdok-geodatastore-api.svg)](https://packagist.org/packages/swisnl/pdok-geodatastore-api)
+[![Software License](https://img.shields.io/packagist/l/swisnl/pdok-geodatastore-api.svg)](LICENSE) 
+[![Run Status](https://api.shippable.com/projects/5a05d4ece397490700035e23/badge?branch=master)](https://app.shippable.com/github/swisnl/pdok-geodatastore-api)
+[![Coverage Badge](https://api.shippable.com/projects/5a05d4ece397490700035e23/coverageBadge?branch=master)](https://app.shippable.com/github/swisnl/pdok-geodatastore-api)
+
 A simple Object Oriented wrapper for PDOK Geodatastore API, written in PHP7. Uses [PDOK Geodatastore API v1](https://geodatastore.pdok.nl/api/v1/docs).
 
 ## Features
