@@ -24,7 +24,7 @@ class DatasetTest extends TestCase
     public function shouldGetAllDatasetsWithFilterParameters()
     {
         $api = $this->getApiMock();
-        $filterData = array('foo' => 'bar', 'bar' => 'foo');
+        $filterData = ['foo' => 'bar', 'bar' => 'foo'];
 
         $api->expects($this->once())
             ->method('get')
@@ -39,7 +39,7 @@ class DatasetTest extends TestCase
     public function shouldCreateDataset()
     {
         $api = $this->getApiMock();
-        $datasetData = array('metadata' => 'rl76tg5q9mff7l04bk19kxjj5q1w8eblm58dusd7');
+        $datasetData = ['metadata' => 'rl76tg5q9mff7l04bk19kxjj5q1w8eblm58dusd7'];
 
         $api->expects($this->once())
             ->method('post')
@@ -54,7 +54,7 @@ class DatasetTest extends TestCase
     public function shouldUpdateDataset()
     {
         $api = $this->getApiMock();
-        $datasetData = array('metadata' => 'rl76tg5q9mff7l04bk19kxjj5q1w8eblm58dusd7');
+        $datasetData = ['metadata' => 'rl76tg5q9mff7l04bk19kxjj5q1w8eblm58dusd7'];
 
         $api->expects($this->once())
             ->method('post')

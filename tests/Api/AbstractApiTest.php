@@ -13,16 +13,16 @@ class AbstractApiTest extends TestCase
      */
     public function shouldPassGETRequestToClient()
     {
-        $expectedArray = array('value');
+        $expectedArray = ['value'];
 
-        $httpClient = $this->getHttpMethodsMock(array('get'));
+        $httpClient = $this->getHttpMethodsMock(['get']);
         $httpClient
             ->expects($this->any())
             ->method('get')
-            ->with('/path?param1=param1value', array('header1' => 'header1value'))
+            ->with('/path?param1=param1value', ['header1' => 'header1value'])
             ->will($this->returnValue($this->getPSR7Response($expectedArray)));
         $client = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\Client::class)
-            ->setMethods(array('getHttpClient'))
+            ->setMethods(['getHttpClient'])
             ->getMock();
         $client->expects($this->any())
             ->method('getHttpClient')
@@ -41,17 +41,17 @@ class AbstractApiTest extends TestCase
      */
     public function shouldPassPOSTRequestToClient()
     {
-        $expectedArray = array('value');
+        $expectedArray = ['value'];
 
-        $httpClient = $this->getHttpMethodsMock(array('post'));
+        $httpClient = $this->getHttpMethodsMock(['post']);
         $httpClient
             ->expects($this->once())
             ->method('post')
-            ->with('/path', new ArraySubset(array('option1' => 'option1value')), $this->isInstanceOf(\GuzzleHttp\Psr7\Stream::class))
+            ->with('/path', new ArraySubset(['option1' => 'option1value']), $this->isInstanceOf(\GuzzleHttp\Psr7\Stream::class))
             ->will($this->returnValue($this->getPSR7Response($expectedArray)));
 
         $client = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\Client::class)
-            ->setMethods(array('getHttpClient'))
+            ->setMethods(['getHttpClient'])
             ->getMock();
         $client->expects($this->any())
             ->method('getHttpClient')
@@ -69,17 +69,17 @@ class AbstractApiTest extends TestCase
      */
     public function shouldPassPATCHRequestToClient()
     {
-        $expectedArray = array('value');
+        $expectedArray = ['value'];
 
-        $httpClient = $this->getHttpMethodsMock(array('patch'));
+        $httpClient = $this->getHttpMethodsMock(['patch']);
         $httpClient
             ->expects($this->once())
             ->method('patch')
-            ->with('/path', new ArraySubset(array('option1' => 'option1value')), $this->isInstanceOf(\GuzzleHttp\Psr7\Stream::class))
+            ->with('/path', new ArraySubset(['option1' => 'option1value']), $this->isInstanceOf(\GuzzleHttp\Psr7\Stream::class))
             ->will($this->returnValue($this->getPSR7Response($expectedArray)));
 
         $client = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\Client::class)
-            ->setMethods(array('getHttpClient'))
+            ->setMethods(['getHttpClient'])
             ->getMock();
         $client->expects($this->any())
             ->method('getHttpClient')
@@ -97,17 +97,17 @@ class AbstractApiTest extends TestCase
      */
     public function shouldPassPUTRequestToClient()
     {
-        $expectedArray = array('value');
+        $expectedArray = ['value'];
 
-        $httpClient = $this->getHttpMethodsMock(array('put'));
+        $httpClient = $this->getHttpMethodsMock(['put']);
         $httpClient
             ->expects($this->once())
             ->method('put')
-            ->with('/path', new ArraySubset(array('option1' => 'option1value')), $this->isInstanceOf(\GuzzleHttp\Psr7\Stream::class))
+            ->with('/path', new ArraySubset(['option1' => 'option1value']), $this->isInstanceOf(\GuzzleHttp\Psr7\Stream::class))
             ->will($this->returnValue($this->getPSR7Response($expectedArray)));
 
         $client = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\Client::class)
-            ->setMethods(array('getHttpClient'))
+            ->setMethods(['getHttpClient'])
             ->getMock();
         $client->expects($this->any())
             ->method('getHttpClient')
@@ -125,17 +125,17 @@ class AbstractApiTest extends TestCase
      */
     public function shouldPassDELETERequestToClient()
     {
-        $expectedArray = array('value');
+        $expectedArray = ['value'];
 
-        $httpClient = $this->getHttpMethodsMock(array('delete'));
+        $httpClient = $this->getHttpMethodsMock(['delete']);
         $httpClient
             ->expects($this->once())
             ->method('delete')
-            ->with('/path', new ArraySubset(array('option1' => 'option1value')), $this->isInstanceOf(\GuzzleHttp\Psr7\Stream::class))
+            ->with('/path', new ArraySubset(['option1' => 'option1value']), $this->isInstanceOf(\GuzzleHttp\Psr7\Stream::class))
             ->will($this->returnValue($this->getPSR7Response($expectedArray)));
 
         $client = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\Client::class)
-            ->setMethods(array('getHttpClient'))
+            ->setMethods(['getHttpClient'])
             ->getMock();
         $client->expects($this->any())
             ->method('getHttpClient')
@@ -184,9 +184,9 @@ class AbstractApiTest extends TestCase
      *
      * @return \Http\Client\Common\HttpMethodsClient
      */
-    protected function getHttpMethodsMock(array $methods = array())
+    protected function getHttpMethodsMock(array $methods = [])
     {
-        $methods = array_merge(array('sendRequest'), $methods);
+        $methods = array_merge(['sendRequest'], $methods);
         $mock = $this->getMockBuilder(\Http\Client\Common\HttpMethodsClient::class)
             ->disableOriginalConstructor()
             ->setMethods($methods)
@@ -204,7 +204,7 @@ class AbstractApiTest extends TestCase
     protected function getHttpClientMock()
     {
         $mock = $this->getMockBuilder(\Http\Client\HttpClient::class)
-            ->setMethods(array('sendRequest'))
+            ->setMethods(['sendRequest'])
             ->getMock();
         $mock
             ->expects($this->any())
@@ -222,7 +222,7 @@ class AbstractApiTest extends TestCase
     {
         return new Response(
             200,
-            array('Content-Type' => 'application/json'),
+            ['Content-Type' => 'application/json'],
             \GuzzleHttp\Psr7\stream_for(json_encode($expectedArray))
         );
     }

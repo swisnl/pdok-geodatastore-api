@@ -30,7 +30,7 @@ class Registry extends AbstractApi
      *
      * @return array
      */
-    public function locations(array $params = array())
+    public function locations(array $params = [])
     {
         return $this->get('/registry/location', $params);
     }

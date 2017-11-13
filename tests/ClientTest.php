@@ -38,7 +38,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
     public function shouldAuthenticateUsingGivenParameters()
     {
         $builder = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\HttpClient\Builder::class)
-            ->setMethods(array('addPlugin', 'removePlugin'))
+            ->setMethods(['addPlugin', 'removePlugin'])
             ->disableOriginalConstructor()
             ->getMock();
         $builder->expects($this->once())
@@ -103,12 +103,12 @@ class ClientTest extends \PHPUnit\Framework\TestCase
 
     public function getApiClassesProvider()
     {
-        return array(
-            array('dataset', Api\Dataset::class),
-            array('datasets', Api\Dataset::class),
+        return [
+            ['dataset', Api\Dataset::class],
+            ['datasets', Api\Dataset::class],
 
-            array('registry', Api\Registry::class),
-            array('registries', Api\Registry::class),
-        );
+            ['registry', Api\Registry::class],
+            ['registries', Api\Registry::class],
+        ];
     }
 }

@@ -161,7 +161,7 @@ class Builder
         if (!isset($this->headers[$header])) {
             $this->headers[$header] = $headerValue;
         } else {
-            $this->headers[$header] = array_merge((array)$this->headers[$header], array($headerValue));
+            $this->headers[$header] = array_merge((array)$this->headers[$header], [$headerValue]);
         }
 
         $this->removePlugin(Plugin\HeaderAppendPlugin::class);

@@ -12,7 +12,7 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
     public function shouldClearHeaders()
     {
         $builder = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\HttpClient\Builder::class)
-            ->setMethods(array('addPlugin', 'removePlugin'))
+            ->setMethods(['addPlugin', 'removePlugin'])
             ->getMock();
         $builder->expects($this->once())
             ->method('addPlugin')
@@ -30,10 +30,10 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
      */
     public function shouldAddHeaders()
     {
-        $headers = array('header1', 'header2');
+        $headers = ['header1', 'header2'];
 
         $client = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\HttpClient\Builder::class)
-            ->setMethods(array('addPlugin', 'removePlugin'))
+            ->setMethods(['addPlugin', 'removePlugin'])
             ->getMock();
         $client->expects($this->once())
             ->method('addPlugin')
@@ -57,7 +57,7 @@ class BuilderTest extends \PHPUnit\Framework\TestCase
         ];
 
         $client = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\HttpClient\Builder::class)
-            ->setMethods(array('removePlugin', 'addPlugin'))
+            ->setMethods(['removePlugin', 'addPlugin'])
             ->getMock();
 
         $client->expects($this->once())

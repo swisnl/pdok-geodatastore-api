@@ -35,7 +35,7 @@ abstract class AbstractApi implements ApiInterface
      *
      * @return array|string
      */
-    protected function get($path, array $parameters = array(), array $requestHeaders = array())
+    protected function get($path, array $parameters = [], array $requestHeaders = [])
     {
         if (count($parameters) > 0) {
             $path .= '?'.http_build_query($parameters);
@@ -55,7 +55,7 @@ abstract class AbstractApi implements ApiInterface
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    protected function head($path, array $parameters = array(), array $requestHeaders = array())
+    protected function head($path, array $parameters = [], array $requestHeaders = [])
     {
         if (count($parameters) > 0) {
             $path .= '?'.http_build_query($parameters);
@@ -73,7 +73,7 @@ abstract class AbstractApi implements ApiInterface
      *
      * @return array|string
      */
-    protected function post($path, array $parameters = array(), array $requestHeaders = array())
+    protected function post($path, array $parameters = [], array $requestHeaders = [])
     {
         $builder = $this->getMultipartStreamBuilder($parameters);
 
@@ -98,7 +98,7 @@ abstract class AbstractApi implements ApiInterface
      *
      * @return array|string
      */
-    protected function patch($path, array $parameters = array(), array $requestHeaders = array())
+    protected function patch($path, array $parameters = [], array $requestHeaders = [])
     {
         $builder = $this->getMultipartStreamBuilder($parameters);
 
@@ -123,7 +123,7 @@ abstract class AbstractApi implements ApiInterface
      *
      * @return array|string
      */
-    protected function put($path, array $parameters = array(), array $requestHeaders = array())
+    protected function put($path, array $parameters = [], array $requestHeaders = [])
     {
         $builder = $this->getMultipartStreamBuilder($parameters);
 
@@ -148,7 +148,7 @@ abstract class AbstractApi implements ApiInterface
      *
      * @return array|string
      */
-    protected function delete($path, array $parameters = array(), array $requestHeaders = array())
+    protected function delete($path, array $parameters = [], array $requestHeaders = [])
     {
         $builder = $this->getMultipartStreamBuilder($parameters);
 

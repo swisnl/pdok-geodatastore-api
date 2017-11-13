@@ -56,9 +56,9 @@ class Client
         $builder->addPlugin(new PathPrepend(sprintf('/api/%s', $this->getApiVersion())));
         $builder->addPlugin(
             new Plugin\HeaderDefaultsPlugin(
-                array(
+                [
                     'User-Agent' => 'pdok-geodatastore-api (https://github.com/swisnl/pdok-geodatastore-api)',
-                )
+                ]
             )
         );
 

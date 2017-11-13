@@ -38,7 +38,7 @@ class RegistryTest extends TestCase
     public function shouldGetAllLocationsWithFilterParameters()
     {
         $api = $this->getApiMock();
-        $filterData = array('foo' => 'bar', 'bar' => 'foo');
+        $filterData = ['foo' => 'bar', 'bar' => 'foo'];
 
         $api->expects($this->once())
             ->method('get')

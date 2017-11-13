@@ -17,7 +17,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     protected function getApiMock()
     {
         $httpClient = $this->getMockBuilder(\Http\Client\HttpClient::class)
-            ->setMethods(array('sendRequest'))
+            ->setMethods(['sendRequest'])
             ->getMock();
         $httpClient
             ->expects($this->any())
@@ -26,8 +26,8 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         $client = \Swis\PdokGeodatastoreApi\Client::createWithHttpClient($httpClient);
 
         return $this->getMockBuilder($this->getApiClass())
-            ->setMethods(array('get', 'post', 'patch', 'delete', 'put', 'head'))
-            ->setConstructorArgs(array($client))
+            ->setMethods(['get', 'post', 'patch', 'delete', 'put', 'head'])
+            ->setConstructorArgs([$client])
             ->getMock();
     }
 

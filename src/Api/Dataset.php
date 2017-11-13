@@ -18,7 +18,7 @@ class Dataset extends AbstractApi
      *
      * @return array
      */
-    public function all(array $params = array())
+    public function all(array $params = [])
     {
         return $this->get('/datasets', $params);
     }
