@@ -39,6 +39,32 @@ class AbstractApiTest extends TestCase
     /**
      * @test
      */
+    public function shouldPassHEADRequestToClient()
+    {
+        $httpClient = $this->getHttpMethodsMock(['head']);
+        $httpClient
+            ->expects($this->any())
+            ->method('head')
+            ->with('/path?param1=param1value', ['header1' => 'header1value'])
+            ->will($this->returnValue($this->getPSR7Response([])));
+        $client = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\Client::class)
+            ->setMethods(['getHttpClient'])
+            ->getMock();
+        $client->expects($this->any())
+            ->method('getHttpClient')
+            ->willReturn($httpClient);
+
+        $api = $this->getAbstractApiObject($client);
+
+        $actual = $this->getMethod($api, 'head')
+            ->invokeArgs($api, ['/path', ['param1' => 'param1value'], ['header1' => 'header1value']]);
+
+        $this->assertInstanceOf(\GuzzleHttp\Psr7\Response::class, $actual);
+    }
+
+    /**
+     * @test
+     */
     public function shouldPassPOSTRequestToClient()
     {
         $expectedArray = ['value'];
