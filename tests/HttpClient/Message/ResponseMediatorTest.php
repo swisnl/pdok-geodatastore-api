@@ -7,7 +7,10 @@ use Swis\PdokGeodatastoreApi\HttpClient\Message\ResponseMediator;
 
 class ResponseMediatorTest extends \PHPUnit\Framework\TestCase
 {
-    public function testGetContent()
+    /**
+     * @test
+     */
+    public function itCanGetContent()
     {
         $body = ['foo' => 'bar'];
         $response = new Response(
@@ -21,8 +24,10 @@ class ResponseMediatorTest extends \PHPUnit\Framework\TestCase
 
     /**
      * If content-type is not json we should get the raw body.
+     *
+     * @test
      */
-    public function testGetContentNotJson()
+    public function itCanGetContentNotJson()
     {
         $body = 'foobar';
         $response = new Response(
@@ -36,8 +41,10 @@ class ResponseMediatorTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Make sure we return the body if we have invalid json
+     *
+     * @test
      */
-    public function testGetContentInvalidJson()
+    public function itCanGetContentInvalidJson()
     {
         $body = 'foobar';
         $response = new Response(
@@ -49,7 +56,10 @@ class ResponseMediatorTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($body, ResponseMediator::getContent($response));
     }
 
-    public function testGetHeader()
+    /**
+     * @test
+     */
+    public function itCanGetHeader()
     {
         $header = 'application/json';
         $response = new Response(

@@ -7,7 +7,7 @@ class RegistryTest extends TestCase
     /**
      * @test
      */
-    public function shouldGetAllRegistries()
+    public function itShouldGetAllRegistries()
     {
         $api = $this->getApiMock();
 
@@ -21,7 +21,7 @@ class RegistryTest extends TestCase
     /**
      * @test
      */
-    public function shouldGetAllLocations()
+    public function itShouldGetAllLocations()
     {
         $api = $this->getApiMock();
 
@@ -35,7 +35,7 @@ class RegistryTest extends TestCase
     /**
      * @test
      */
-    public function shouldGetAllLocationsWithFilterParameters()
+    public function itShouldGetAllLocationsWithFilterParameters()
     {
         $api = $this->getApiMock();
         $filterData = ['foo' => 'bar', 'bar' => 'foo'];
@@ -50,7 +50,7 @@ class RegistryTest extends TestCase
     /**
      * @test
      */
-    public function shouldGetAllKeywords()
+    public function itShouldGetAllKeywords()
     {
         $api = $this->getApiMock();
 

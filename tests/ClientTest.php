@@ -12,7 +12,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function shouldNotHaveToPassHttpClientToConstructor()
+    public function itShouldNotHaveToPassHttpClientToConstructor()
     {
         $client = new Client();
 
@@ -22,7 +22,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function shouldPassHttpClientInterfaceToConstructor()
+    public function itShouldPassHttpClientInterfaceToConstructor()
     {
         $httpClientMock = $this->getMockBuilder(\Http\Client\HttpClient::class)
             ->getMock();
@@ -35,7 +35,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function shouldAuthenticateUsingGivenParameters()
+    public function itShouldAuthenticateUsingGivenParameters()
     {
         $builder = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\HttpClient\Builder::class)
             ->setMethods(['addPlugin', 'removePlugin'])
@@ -63,7 +63,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
      * @test
      * @dataProvider getApiClassesProvider
      */
-    public function shouldGetApiInstance($apiName, $class)
+    public function itShouldGetApiInstance($apiName, $class)
     {
         $client = new Client();
 
@@ -74,7 +74,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
      * @test
      * @dataProvider getApiClassesProvider
      */
-    public function shouldGetMagicApiInstance($apiName, $class)
+    public function itShouldGetMagicApiInstance($apiName, $class)
     {
         $client = new Client();
 
@@ -85,7 +85,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
      * @test
      * @expectedException \Swis\PdokGeodatastoreApi\Exception\InvalidArgumentException
      */
-    public function shouldNotGetApiInstance()
+    public function itShouldNotGetApiInstance()
     {
         $client = new Client();
         $client->api('do_not_exist');
@@ -95,7 +95,7 @@ class ClientTest extends \PHPUnit\Framework\TestCase
      * @test
      * @expectedException BadMethodCallException
      */
-    public function shouldNotGetMagicApiInstance()
+    public function itShouldNotGetMagicApiInstance()
     {
         $client = new Client();
         $client->doNotExist();

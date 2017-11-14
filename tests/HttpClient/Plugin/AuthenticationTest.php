@@ -7,7 +7,7 @@ class AuthenticationTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function shouldAddAuthorizationHeaders()
+    public function itShouldAddAuthorizationHeaders()
     {
         $username = 'username';
         $password = 'password';

@@ -7,7 +7,7 @@ class PathPrependTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function shouldPrependPath()
+    public function itShouldPrependPath()
     {
         $path = '/api/v1';
 

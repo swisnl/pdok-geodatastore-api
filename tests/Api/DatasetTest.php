@@ -7,7 +7,7 @@ class DatasetTest extends TestCase
     /**
      * @test
      */
-    public function shouldGetAllDatasets()
+    public function itShouldGetAllDatasets()
     {
         $api = $this->getApiMock();
 
@@ -21,7 +21,7 @@ class DatasetTest extends TestCase
     /**
      * @test
      */
-    public function shouldGetAllDatasetsWithFilterParameters()
+    public function itShouldGetAllDatasetsWithFilterParameters()
     {
         $api = $this->getApiMock();
         $filterData = ['foo' => 'bar', 'bar' => 'foo'];
@@ -36,7 +36,7 @@ class DatasetTest extends TestCase
     /**
      * @test
      */
-    public function shouldCreateDataset()
+    public function itShouldCreateDataset()
     {
         $api = $this->getApiMock();
         $datasetData = ['metadata' => 'rl76tg5q9mff7l04bk19kxjj5q1w8eblm58dusd7'];
@@ -51,7 +51,7 @@ class DatasetTest extends TestCase
     /**
      * @test
      */
-    public function shouldUpdateDataset()
+    public function itShouldUpdateDataset()
     {
         $api = $this->getApiMock();
         $datasetData = ['metadata' => 'rl76tg5q9mff7l04bk19kxjj5q1w8eblm58dusd7'];
@@ -66,7 +66,7 @@ class DatasetTest extends TestCase
     /**
      * @test
      */
-    public function shouldDestroyDataset()
+    public function itShouldDestroyDataset()
     {
         $api = $this->getApiMock();
 

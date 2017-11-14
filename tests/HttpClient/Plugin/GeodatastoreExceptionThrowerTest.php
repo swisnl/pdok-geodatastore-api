@@ -9,7 +9,7 @@ class GeodatastoreExceptionThrowerTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
-    public function shouldNotThrowExceptionForSuccessfulRequest()
+    public function itShouldNotThrowExceptionForSuccessfulRequest()
     {
         $exceptionThrower = new \Swis\PdokGeodatastoreApi\HttpClient\Plugin\GeodatastoreExceptionThrower();
 
@@ -25,19 +25,17 @@ class GeodatastoreExceptionThrowerTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @test
+     * @expectedException \Swis\PdokGeodatastoreApi\Exception\ErrorException
+     * @expectedExceptionMessage Whoops!
      */
-    public function shouldThrowExceptionFor400StatusCode()
+    public function itShouldThrowExceptionFor400StatusCode()
     {
-        $exceptionMessage = 'Whoops!';
-
         $exceptionThrower = new \Swis\PdokGeodatastoreApi\HttpClient\Plugin\GeodatastoreExceptionThrower();
 
-        $this->expectException(\Swis\PdokGeodatastoreApi\Exception\ErrorException::class);
-        $this->expectExceptionMessage($exceptionMessage);
         $exceptionThrower->handleRequest(
             $this->getRequestMock(),
-            function () use ($exceptionMessage) {
-                return $this->getPromiseMock(400, json_encode(['messages' => [$exceptionMessage]]));
+            function () {
+                return $this->getPromiseMock(400, json_encode(['messages' => ['Whoops!']]));
             },
             function () {
             }
@@ -46,12 +44,12 @@ class GeodatastoreExceptionThrowerTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @test
+     * @expectedException \Swis\PdokGeodatastoreApi\Exception\RuntimeException
      */
-    public function shouldThrowExceptionForOtherErrorStatusCodes()
+    public function itShouldThrowExceptionForOtherErrorStatusCodes()
     {
         $exceptionThrower = new \Swis\PdokGeodatastoreApi\HttpClient\Plugin\GeodatastoreExceptionThrower();
 
-        $this->expectException(\Swis\PdokGeodatastoreApi\Exception\RuntimeException::class);
         $exceptionThrower->handleRequest(
             $this->getRequestMock(),
             function () {

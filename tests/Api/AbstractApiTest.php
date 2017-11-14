@@ -11,7 +11,7 @@ class AbstractApiTest extends TestCase
     /**
      * @test
      */
-    public function shouldPassGETRequestToClient()
+    public function itShouldPassGETRequestToClient()
     {
         $expectedArray = ['value'];
 
@@ -39,7 +39,7 @@ class AbstractApiTest extends TestCase
     /**
      * @test
      */
-    public function shouldPassHEADRequestToClient()
+    public function itShouldPassHEADRequestToClient()
     {
         $httpClient = $this->getHttpMethodsMock(['head']);
         $httpClient
@@ -65,7 +65,7 @@ class AbstractApiTest extends TestCase
     /**
      * @test
      */
-    public function shouldPassPOSTRequestToClient()
+    public function itShouldPassPOSTRequestToClient()
     {
         $expectedArray = ['value'];
 
@@ -93,7 +93,7 @@ class AbstractApiTest extends TestCase
     /**
      * @test
      */
-    public function shouldPassPATCHRequestToClient()
+    public function itShouldPassPATCHRequestToClient()
     {
         $expectedArray = ['value'];
 
@@ -121,7 +121,7 @@ class AbstractApiTest extends TestCase
     /**
      * @test
      */
-    public function shouldPassPUTRequestToClient()
+    public function itShouldPassPUTRequestToClient()
     {
         $expectedArray = ['value'];
 
@@ -149,7 +149,7 @@ class AbstractApiTest extends TestCase
     /**
      * @test
      */
-    public function shouldPassDELETERequestToClient()
+    public function itShouldPassDELETERequestToClient()
     {
         $expectedArray = ['value'];
 
