@@ -13,7 +13,6 @@ use Swis\PdokGeodatastoreApi\Exception\BadMethodCallException;
 use Swis\PdokGeodatastoreApi\Exception\InvalidArgumentException;
 use Swis\PdokGeodatastoreApi\HttpClient\Builder;
 use Swis\PdokGeodatastoreApi\HttpClient\Plugin\GeodatastoreExceptionThrower;
-use Swis\PdokGeodatastoreApi\HttpClient\Plugin\PathPrepend;
 
 /**
  * Simple yet very cool PHP GitHub client.
@@ -50,10 +49,11 @@ class Client
         $this->httpClientBuilder = $builder = $httpClientBuilder ?: new Builder();
         $this->apiVersion = $apiVersion ?: 'v1';
 
+        $uri = $this->getUri();
         $builder->addPlugin(new GeodatastoreExceptionThrower());
         $builder->addPlugin(new Plugin\RedirectPlugin());
-        $builder->addPlugin(new Plugin\AddHostPlugin(UriFactoryDiscovery::find()->createUri('https://geodatastore.pdok.nl')));
-        $builder->addPlugin(new PathPrepend(sprintf('/api/%s', $this->getApiVersion())));
+        $builder->addPlugin(new Plugin\AddHostPlugin($uri));
+        $builder->addPlugin(new Plugin\AddPathPlugin($uri));
         $builder->addPlugin(
             new Plugin\HeaderDefaultsPlugin(
                 [
@@ -63,6 +63,14 @@ class Client
         );
 
         $builder->addHeaderValue('Accept', 'application/json');
+    }
+
+    /**
+     * @return \Psr\Http\Message\UriInterface
+     */
+    private function getUri()
+    {
+        return UriFactoryDiscovery::find()->createUri(sprintf('https://geodatastore.pdok.nl/api/%s', $this->getApiVersion()));
     }
 
     /**
