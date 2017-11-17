@@ -34,6 +34,36 @@ class ClientTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      */
+    public function itShouldUseTestingEnvironment()
+    {
+        $builder = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\HttpClient\Builder::class)
+            ->setMethods(['addPlugin', 'removePlugin'])
+            ->disableOriginalConstructor()
+            ->getMock();
+        $builder->expects($this->once())
+            ->method('addPlugin')
+            ->with($this->isInstanceOf(\Http\Client\Common\Plugin\BaseUriPlugin::class));
+        $builder->expects($this->once())
+            ->method('removePlugin')
+            ->with(\Http\Client\Common\Plugin\BaseUriPlugin::class);
+
+        $client = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\Client::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['getHttpClientBuilder', 'getApiVersion'])
+            ->getMock();
+        $client->expects($this->any())
+            ->method('getHttpClientBuilder')
+            ->willReturn($builder);
+        $client->expects($this->any())
+            ->method('getApiVersion')
+            ->willReturn('v1');
+
+        $client->useTestingEnvironment();
+    }
+
+    /**
+     * @test
+     */
     public function itShouldAuthenticateUsingGivenParameters()
     {
         $builder = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\HttpClient\Builder::class)

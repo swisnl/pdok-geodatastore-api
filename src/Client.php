@@ -105,6 +105,16 @@ class Client
     }
 
     /**
+     * Changes the URL to the testing environment.
+     */
+    public function useTestingEnvironment()
+    {
+        $builder = $this->getHttpClientBuilder();
+        $builder->removePlugin(Plugin\BaseUriPlugin::class);
+        $builder->addPlugin(new Plugin\BaseUriPlugin(UriFactoryDiscovery::find()->createUri(sprintf('https://test.geodatastore.pdok.nl/api/%s', $this->getApiVersion()))));
+    }
+
+    /**
      * Authenticate a user for all next requests.
      *
      * @param string $username NGR private username
