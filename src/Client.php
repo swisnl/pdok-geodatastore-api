@@ -49,11 +49,9 @@ class Client
         $this->httpClientBuilder = $builder = $httpClientBuilder ?: new Builder();
         $this->apiVersion = $apiVersion ?: 'v1';
 
-        $uri = $this->getUri();
         $builder->addPlugin(new GeodatastoreExceptionThrower());
         $builder->addPlugin(new Plugin\RedirectPlugin());
-        $builder->addPlugin(new Plugin\AddHostPlugin($uri));
-        $builder->addPlugin(new Plugin\AddPathPlugin($uri));
+        $builder->addPlugin(new Plugin\BaseUriPlugin(UriFactoryDiscovery::find()->createUri(sprintf('https://geodatastore.pdok.nl/api/%s', $this->getApiVersion()))));
         $builder->addPlugin(
             new Plugin\HeaderDefaultsPlugin(
                 [
@@ -63,14 +61,6 @@ class Client
         );
 
         $builder->addHeaderValue('Accept', 'application/json');
-    }
-
-    /**
-     * @return \Psr\Http\Message\UriInterface
-     */
-    private function getUri()
-    {
-        return UriFactoryDiscovery::find()->createUri(sprintf('https://geodatastore.pdok.nl/api/%s', $this->getApiVersion()));
     }
 
     /**
