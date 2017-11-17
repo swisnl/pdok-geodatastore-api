@@ -6,12 +6,12 @@ use Http\Client\Common\HttpMethodsClient;
 use Http\Client\Common\Plugin;
 use Http\Client\HttpClient;
 use Http\Discovery\UriFactoryDiscovery;
+use Http\Message\Authentication\BasicAuth;
 use Http\Message\StreamFactory;
 use Swis\PdokGeodatastoreApi\Api\ApiInterface;
 use Swis\PdokGeodatastoreApi\Exception\BadMethodCallException;
 use Swis\PdokGeodatastoreApi\Exception\InvalidArgumentException;
 use Swis\PdokGeodatastoreApi\HttpClient\Builder;
-use Swis\PdokGeodatastoreApi\HttpClient\Plugin\Authentication;
 use Swis\PdokGeodatastoreApi\HttpClient\Plugin\GeodatastoreExceptionThrower;
 use Swis\PdokGeodatastoreApi\HttpClient\Plugin\PathPrepend;
 
@@ -114,8 +114,9 @@ class Client
      */
     public function authenticate($username, $password)
     {
-        $this->getHttpClientBuilder()->removePlugin(Authentication::class);
-        $this->getHttpClientBuilder()->addPlugin(new Authentication($username, $password));
+        $builder = $this->getHttpClientBuilder();
+        $builder->removePlugin(Plugin\AuthenticationPlugin::class);
+        $builder->addPlugin(new Plugin\AuthenticationPlugin(new BasicAuth($username, $password)));
     }
 
     /**

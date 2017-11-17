@@ -5,7 +5,6 @@ namespace Swis\PdokGeodatastoreApi\Tests;
 use Swis\PdokGeodatastoreApi\Api;
 use Swis\PdokGeodatastoreApi\Client;
 use Swis\PdokGeodatastoreApi\Exception\BadMethodCallException;
-use Swis\PdokGeodatastoreApi\HttpClient\Plugin\Authentication;
 
 class ClientTest extends \PHPUnit\Framework\TestCase
 {
@@ -41,12 +40,13 @@ class ClientTest extends \PHPUnit\Framework\TestCase
             ->setMethods(['addPlugin', 'removePlugin'])
             ->disableOriginalConstructor()
             ->getMock();
+        $authentication = new \Http\Message\Authentication\BasicAuth('login', 'password');
         $builder->expects($this->once())
             ->method('addPlugin')
-            ->with($this->equalTo(new Authentication('login', 'password')));
+            ->with($this->equalTo(new \Http\Client\Common\Plugin\AuthenticationPlugin($authentication)));
         $builder->expects($this->once())
             ->method('removePlugin')
-            ->with(Authentication::class);
+            ->with(\Http\Client\Common\Plugin\AuthenticationPlugin::class);
 
         $client = $this->getMockBuilder(\Swis\PdokGeodatastoreApi\Client::class)
             ->disableOriginalConstructor()
