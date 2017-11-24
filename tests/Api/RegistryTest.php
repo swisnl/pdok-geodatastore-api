@@ -21,6 +21,93 @@ class RegistryTest extends TestCase
     /**
      * @test
      */
+    public function itShouldGetAllRegistriesByType()
+    {
+        $api = $this->getApiMock();
+
+        $api->expects($this->once())
+            ->method('get')
+            ->with('/registry/foo-bar');
+
+        $api->show('foo-bar');
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldGetAllRegistriesByTypeWithFilterParameters()
+    {
+        $api = $this->getApiMock();
+        $filterData = ['foo' => 'bar', 'bar' => 'foo'];
+
+        $api->expects($this->once())
+            ->method('get')
+            ->with('/registry/foo-bar', $filterData);
+
+        $api->show('foo-bar', $filterData);
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldGetAllDenominators()
+    {
+        $api = $this->getApiMock();
+
+        $api->expects($this->once())
+            ->method('get')
+            ->with('/registry/denominator');
+
+        $api->denominators();
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldGetAllDenominatorsWithFilterParameters()
+    {
+        $api = $this->getApiMock();
+        $filterData = ['foo' => 'bar', 'bar' => 'foo'];
+
+        $api->expects($this->once())
+            ->method('get')
+            ->with('/registry/denominator', $filterData);
+
+        $api->denominators($filterData);
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldGetAllLicenses()
+    {
+        $api = $this->getApiMock();
+
+        $api->expects($this->once())
+            ->method('get')
+            ->with('/registry/license');
+
+        $api->licenses();
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldGetAllLicensesWithFilterParameters()
+    {
+        $api = $this->getApiMock();
+        $filterData = ['foo' => 'bar', 'bar' => 'foo'];
+
+        $api->expects($this->once())
+            ->method('get')
+            ->with('/registry/license', $filterData);
+
+        $api->licenses($filterData);
+    }
+
+    /**
+     * @test
+     */
     public function itShouldGetAllLocations()
     {
         $api = $this->getApiMock();
@@ -50,15 +137,30 @@ class RegistryTest extends TestCase
     /**
      * @test
      */
-    public function itShouldGetAllKeywords()
+    public function itShouldGetAllTopicCategories()
     {
         $api = $this->getApiMock();
 
         $api->expects($this->once())
             ->method('get')
-            ->with('/registry/foo-bar');
+            ->with('/registry/topicCategory');
 
-        $api->keywords('foo-bar');
+        $api->topicCategories();
+    }
+
+    /**
+     * @test
+     */
+    public function itShouldGetAllTopicCategoriesWithFilterParameters()
+    {
+        $api = $this->getApiMock();
+        $filterData = ['foo' => 'bar', 'bar' => 'foo'];
+
+        $api->expects($this->once())
+            ->method('get')
+            ->with('/registry/topicCategory', $filterData);
+
+        $api->topicCategories($filterData);
     }
 
     /**

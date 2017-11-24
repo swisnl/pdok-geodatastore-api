@@ -3,7 +3,7 @@
 namespace Swis\PdokGeodatastoreApi\Api;
 
 /**
- * Listing registries, listing locations and listing keywords.
+ * Listing registries and listing denominators, locations, licenses and topicCategories.
  *
  * @link https://geodatastore.pdok.nl/api/v1/docs
  */
@@ -22,6 +22,49 @@ class Registry extends AbstractApi
     }
 
     /**
+     * Gets registry objects.
+     *
+     * @link https://geodatastore.pdok.nl/api/v1/docs#path--api-v1-registry--name-
+     *
+     * @param string $name the name of the registry
+     * @param array $params query parameters
+     *
+     * @return array
+     */
+    public function show($name, array $params = [])
+    {
+        return $this->get('/registry/'.rawurlencode($name), $params);
+    }
+
+    /**
+     * Gets denominator objects.
+     *
+     * @link https://geodatastore.pdok.nl/api/v1/docs#path--api-v1-registry--name-
+     *
+     * @param array $params query parameters
+     *
+     * @return array
+     */
+    public function denominators(array $params = [])
+    {
+        return $this->show('denominator', $params);
+    }
+
+    /**
+     * Gets license objects.
+     *
+     * @link https://geodatastore.pdok.nl/api/v1/docs#path--api-v1-registry--name-
+     *
+     * @param array $params query parameters
+     *
+     * @return array
+     */
+    public function licenses(array $params = [])
+    {
+        return $this->show('license', $params);
+    }
+
+    /**
      * Gets location objects.
      *
      * @link https://geodatastore.pdok.nl/api/v1/docs#path--api-v1-registry-location
@@ -32,20 +75,20 @@ class Registry extends AbstractApi
      */
     public function locations(array $params = [])
     {
-        return $this->get('/registry/location', $params);
+        return $this->show('location', $params);
     }
 
     /**
-     * Gets keyword objects.
+     * Gets topicCategory objects.
      *
      * @link https://geodatastore.pdok.nl/api/v1/docs#path--api-v1-registry--name-
      *
-     * @param string $name the name of the registry
+     * @param array $params query parameters
      *
      * @return array
      */
-    public function keywords($name)
+    public function topicCategories(array $params = [])
     {
-        return $this->get('/registry/'.rawurlencode($name));
+        return $this->show('topicCategory', $params);
     }
 }
