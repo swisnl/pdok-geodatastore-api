@@ -10,6 +10,10 @@
 
 A simple Object Oriented wrapper for PDOK Geodatastore API, written in PHP7. Uses [PDOK Geodatastore API v1](https://geodatastore.pdok.nl/api/v1/docs).
 
+## :warning: Out of service :warning:
+
+PDOK Geodatastore and its API have been taken out of service as of January 2019, therefore this package no longer works!
+
 ## Features
 
 * Follows PSR-4 conventions and coding standard: autoload friendly
